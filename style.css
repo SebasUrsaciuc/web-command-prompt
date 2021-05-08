@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+:root {
+    --bg-r: 0;
+    --bg-g: 0;
+    --bg-b: 0;
+    --clr-r: 211;
+    --clr-g: 211;
+    --clr-b: 211;
+
+    --caretW: 8;
+    --caretH: 2;
+    --f-size: 12pt;
+
+    --caret-bs: 550;
+}
+
+html {
+    background: rgb(var(--bg-r), var(--bg-g), var(--bg-b));
+}
+
+#edit {
+    color: rgb(var(--clr-r), var(--clr-g), var(--clr-b));
+    font-family: Consolas, serif;
+    height: 9000ex;
+    font-size: var(--f-size);
+    word-break: break-all;
+    white-space: pre;
+    overflow-anchor: none;
+    cursor: default;
+}
+
+#caret {
+    position: relative;
+}
+
+#caret:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: calc(1ch / 8 * var(--caretW));
+    height: calc(var(--f-size) / 8 * var(--caretH));
+    transform: translateY( calc(var(--f-size) / 8 * -0.5) );
+}
+
+@keyframes c-blink {
+    1%, 50% {
+        backdrop-filter: invert(100%);
+    }
+    51%, 100% {
+        backdrop-filter: invert(0%);
+    }
+}
+
+.c-show:not(.typing):after {
+    animation: c-blink calc(var(--caret-bs) * 2ms) linear infinite;
+}
+
+.c-show.typing:after {
+    backdrop-filter: invert(100%);
+}
+
+.hide {
+    display: none;
+}
+
+*::selection {
+    background: rgb(calc(255 - var(--bg-r)), calc(255 - var(--bg-g)), calc(255 - var(--bg-b)));
+    color: rgb(calc(255 - var(--clr-r)), calc(255 - var(--clr-g)), calc(255 - var(--clr-b)));
+}
