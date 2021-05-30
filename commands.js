@@ -131,7 +131,7 @@ cmds.log = {
     help: ``,
     exec: (cmd, args) => {
         args = args.join(" ");
-        download(before.text() + after.text(), args === ""? "log.txt" : args);
+        download(before.innerText + after.innerText, args === ""? "log.txt" : args);
     }
 }
 
