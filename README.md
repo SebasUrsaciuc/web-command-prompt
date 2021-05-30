@@ -3,7 +3,7 @@
 ## What is it?
 Is a simple "emulated" terminal. It is not really useful, but is really cool to see. Input is made from scratch, so it can emulate the windows cmd in proper way.
 
-## What commands it have?
+## What commands it has?
 
 COMMAND  | DESCRIPTION
 ---------|----------------------------------
